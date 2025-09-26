@@ -18,7 +18,6 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate: {
       validator: function(email) {
-        // Basic email validation regex
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       },
       message: 'Please provide a valid email address'
@@ -30,16 +29,16 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Password must be at least 6 characters long']
   }
 }, {
-  timestamps: true // Adds createdAt and updatedAt fields
+  timestamps: true
 });
 
-// Pre-save middleware to hash password before saving to database
+
 userSchema.pre('save', async function(next) {
-  // Only hash the password if it has been modified (or is new)
+
   if (!this.isModified('password')) return next();
 
   try {
-    // Hash password with salt rounds of 12
+
     const saltRounds = 12;
     this.password = await bcrypt.hash(this.password, saltRounds);
     next();
@@ -48,7 +47,6 @@ userSchema.pre('save', async function(next) {
   }
 });
 
-// Instance method to compare password for login (useful for future login functionality)
 userSchema.methods.comparePassword = async function(candidatePassword) {
   try {
     return await bcrypt.compare(candidatePassword, this.password);
