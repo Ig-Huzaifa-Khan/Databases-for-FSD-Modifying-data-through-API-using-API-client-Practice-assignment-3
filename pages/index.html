@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hello Express!</title>
+    <title>User Registration System</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Hello Express!</h1>
-    <p>Showing <code>pages/index.html</code></p>
+    <div class="container">
+      <h1>User Registration System</h1>
+      <p>Backend API for secure user registration with validation and password hashing</p>
+      
+      <div class="api-info">
+        <h2>API Endpoints</h2>
+        <div class="endpoint">
+          <h3>POST /api/register</h3>
+          <p>Register a new user</p>
+          <div class="code-block">
+            <pre>{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "securepassword123"
+}</pre>
+          </div>
+        </div>
+        
+        <div class="endpoint">
+          <h3>GET /api/users</h3>
+          <p>Get all registered users (for testing only)</p>
+        </div>
+        
+        <div class="endpoint">
+          <h3>GET /health</h3>
+          <p>Check server health status</p>
+        </div>
+      </div>
+
+      <div class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>✅ Secure password hashing with bcrypt</li>
+          <li>✅ Email format validation</li>
+          <li>✅ Password minimum length validation (6 characters)</li>
+          <li>✅ Duplicate email prevention</li>
+          <li>✅ Comprehensive error handling</li>
+          <li>✅ RESTful API design</li>
+        </ul>
+      </div>
+
+      <div class="testing-info">
+        <h2>Testing with Bruno/Postman</h2>
+        <p><strong>Base URL:</strong> http://localhost:3010</p>
+        <p>Use Bruno or Postman to test the API endpoints with the JSON payload above.</p>
+      </div>
+    </div>
   </body>
 </html>
